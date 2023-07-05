@@ -1,6 +1,6 @@
 export interface CardDataI {
   ownerName: string;
-  number: number;
+  number: string;
   expirationDate: string;
-  cvc: number;
+  cvc: string;
 }
