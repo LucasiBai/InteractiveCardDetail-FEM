@@ -1,4 +1,4 @@
-import { Injectable, Signal, signal } from '@angular/core';
+import { Injectable, WritableSignal, signal } from '@angular/core';
 import { CardDataI } from '../models/card-data-i';
 
 const initCardData: CardDataI = {
@@ -14,5 +14,5 @@ const initCardData: CardDataI = {
 export class CardDataService {
   constructor() {}
 
-  cardData: Signal<CardDataI> = signal(initCardData);
+  cardData: WritableSignal<CardDataI> = signal(initCardData);
 }

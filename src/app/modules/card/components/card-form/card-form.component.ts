@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CardDataService } from '../../services/card-data.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CardDataI } from '../../models/card-data-i';
 
 @Component({
   selector: 'app-card-form',
@@ -13,9 +14,36 @@ export class CardFormComponent {
   }
   userCardForm!: FormGroup;
 
-  initForm(): FormGroup {
+  public updateData(): void {
+    const { value } = this.userCardForm;
+
+    const {
+      expirationYear: year,
+      expirationMonth: month,
+      name,
+      cardNumber,
+      cvc,
+    } = value;
+
+    this._cardData.cardData.set({
+      ownerName: name,
+      number: cardNumber,
+      expirationDate: this.formatDate(month, year),
+      cvc: cvc,
+    } as CardDataI);
+  }
+
+  private initForm(): FormGroup {
     return this._fb.group({
       name: ['', [Validators.required]],
+      cardNumber: ['', [Validators.required]],
+      cvc: ['', [Validators.required]],
+      expirationMonth: ['', [Validators.required]],
+      expirationYear: ['', [Validators.required]],
     });
+  }
+
+  private formatDate(month: string, year: string): string {
+    return `${month}/${year}`;
   }
 }
