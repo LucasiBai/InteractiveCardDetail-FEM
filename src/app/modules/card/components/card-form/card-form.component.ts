@@ -37,9 +37,24 @@ export class CardFormComponent {
     return this._fb.group({
       name: ['', [Validators.required]],
       cardNumber: ['', [Validators.required]],
-      cvc: ['', [Validators.required]],
-      expirationMonth: ['', [Validators.required]],
-      expirationYear: ['', [Validators.required]],
+      cvc: ['', [Validators.required, Validators.maxLength(4)]],
+      expirationMonth: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(2),
+          Validators.pattern('\bd+\b'),
+        ],
+      ],
+
+      expirationYear: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(2),
+          Validators.pattern('\bd+\b'),
+        ],
+      ],
     });
   }
 

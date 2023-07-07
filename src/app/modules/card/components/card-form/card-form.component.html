@@ -1,8 +1,16 @@
 <app-card-view />
 <form [formGroup]="userCardForm">
   <input type="text" formControlName="name" (input)="updateData()" />
-  <input type="text" formControlName="cardNumber" (input)="updateData()" />
-  <input type="text" formControlName="expirationMonth" (input)="updateData()" />
-  <input type="text" formControlName="expirationYear" (input)="updateData()" />
-  <input type="text" formControlName="cvc" (input)="updateData()" />
+  <input type="number" formControlName="cardNumber" (input)="updateData()" />
+  <input
+    type="number"
+    formControlName="expirationMonth"
+    (input)="updateData()"
+  />
+  <input
+    type="number"
+    formControlName="expirationYear"
+    (input)="updateData()"
+  />
+  <input type="number" formControlName="cvc" (input)="updateData()" />
 </form>
